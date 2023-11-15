@@ -14,13 +14,13 @@ RUN apt-get update \
   && apt-get -y install netcat gcc \
   && apt-get clean
 
+# add app
+COPY . .
+
 # install python dependencies
 RUN pip install --upgrade pip
 COPY ./requirements.txt .
-RUN pip install -r requirements.txt
-
-# add app
-COPY . .
+RUN pip install -r requirements.txt && pip install .
 
 # add entrypoint.sh
 COPY ./entrypoint.sh .
