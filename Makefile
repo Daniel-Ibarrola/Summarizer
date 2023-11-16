@@ -11,5 +11,5 @@ build: ## Build the docker images
 dev:  ## Start the API, DB, client and cap generator in development mode.
 	docker compose up -d && docker compose logs -f
 
-test:
+test:  ## Run all tests
 	docker compose exec web python -m pytest

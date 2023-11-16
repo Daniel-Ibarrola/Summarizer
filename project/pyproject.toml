@@ -22,6 +22,6 @@ dev = ["pytest"]
 
 
 [tool.aerich]
-tortoise_orm = "app.db.TORTOISE_ORM"
+tortoise_orm = "src.app.db.TORTOISE_ORM"
 location = "./migrations"
 src_folder = "./."

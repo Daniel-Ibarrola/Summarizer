@@ -20,7 +20,7 @@ COPY . .
 # install python dependencies
 RUN pip install --upgrade pip
 COPY ./requirements.txt .
-RUN pip install -r requirements.txt && pip install .
+RUN pip install -r requirements.txt && pip install -e .
 
 # add entrypoint.sh
 COPY ./entrypoint.sh .
