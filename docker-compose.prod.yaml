@@ -4,18 +4,15 @@ services:
   web:
     build:
       context: ./project
-      dockerfile: Dockerfile
-    command: uvicorn src.app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000
-    image: summaries-dev:latest
+      dockerfile: Dockerfile.prod
+    image: summaries-prod:latest
     container_name: summaries-api
-    volumes:
-      - ./project:/usr/src/app
     ports:
-      - "8004:8000"
+      - "8000:8000"
     environment:
-      - ENVIRONMENT=dev
+      - ENVIRONMENT=prod
       - TESTING=0
-      - DATABASE_URL=postgres://postgres:postgres@web-db:5432/web_dev
+      - DATABASE_URL=postgres://postgres:postgres@web-db:5432/web_prod
       - DATABASE_TEST_URL=postgres://postgres:postgres@web-db:5432/web_test
     depends_on:
       - web-db

@@ -13,3 +13,21 @@ dev:  ## Start the API, DB, client and cap generator in development mode.
 
 test:  ## Run all tests
 	docker compose exec web python -m pytest
+
+test-coverage: ## Run tests with coverage
+	docker compose exec web python -m pytest --cov="."
+
+lint: ## Lint the code
+	docker compose exec web flake8 src/
+
+format-check:  ## Check code formatting
+	docker compose exec web black src/ --check
+
+format-diff: ## Check diff of code formatting
+	docker compose exec web black src/ --diff
+
+format: ## Format the code
+	docker compose exec web black src/
+
+sort-imports: ## Sort imports in code files:
+	docker compose exec web isort src/
