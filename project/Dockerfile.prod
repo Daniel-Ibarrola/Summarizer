@@ -24,14 +24,14 @@ RUN apt-get update \
   && apt-get -y install netcat gcc \
   && apt-get clean
 
+# add app
+COPY . .
+
 # install python dependencies
 RUN pip install --upgrade pip
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt && pip install .
 RUN pip install "uvicorn[standard]==0.21.1"
-
-# add app
-COPY . .
 
 # chown all the files to the app user
 RUN chown -R app:app $APP_HOME

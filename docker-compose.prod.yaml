@@ -5,7 +5,7 @@ services:
     build:
       context: ./project
       dockerfile: Dockerfile.prod
-    image: summaries-prod:latest
+    image: summarizer:latest
     container_name: summaries-api
     ports:
       - "8000:8000"

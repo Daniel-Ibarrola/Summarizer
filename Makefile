@@ -11,6 +11,9 @@ build: ## Build the docker images
 dev:  ## Start the API, DB, client and cap generator in development mode.
 	docker compose up -d && docker compose logs -f
 
+prod: ## Start the API in prod mode
+	docker run --name summarizer -e PORT=8765 -e DATABASE_URL=sqlite://sqlite.db -p 5003:8765 ghcr.io/daniel-ibarrola/summarizer/summarizer:latest
+
 test:  ## Run all tests
 	docker compose exec web python -m pytest
 
